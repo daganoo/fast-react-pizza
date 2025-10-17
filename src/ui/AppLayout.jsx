@@ -9,7 +9,7 @@ function AppLayout() {
             <Header />
             <main>
                 <p>content</p>
-                <Outlet/>
+                <Outlet />
             </main>
 
             <CartOverview />
