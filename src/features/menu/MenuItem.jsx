@@ -6,6 +6,7 @@ import { addItem } from '../cart/cartSlice';
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
   const dispatch = useDispatch()
+  
   function handlAddToCart() {
     const newItem = {
       pizzaId: id,

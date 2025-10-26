@@ -30,12 +30,14 @@ const initialState = {
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers:{
-    updateName(state, action){
-      state.username =action.payload
-    }
-  }
+  reducers: {
+    updateName(state, action) {
+      state.username = action.payload;
+    },
+  },
 });
 
 export const { updateName } = userSlice.actions;
-export default userSlice.reducer
+export default userSlice.reducer;
+
+export const getUser = (state) => state.user.username;
