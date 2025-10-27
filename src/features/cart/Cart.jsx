@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
 import LinkButton from '../../ui/LinkButton';
 import Button from '../../ui/Button';
 import CartItem from './CartItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCart, clearCart } from './cartSlice';
 import { getUser } from '../user/userSlice';
+import EmptyCart from'./EmptyCart'
 
 function Cart() {
   const cart = useSelector(getCart);
@@ -12,6 +12,8 @@ function Cart() {
   const username = useSelector(getUser);
   const dispatch = useDispatch();
 
+
+  if (!cart.length) return <EmptyCart/>
   return (
     <div className="px-4 py-3">
       <LinkButton to="/menu">&larr; Back to menu</LinkButton>
@@ -20,7 +22,7 @@ function Cart() {
 
       <ul className="mt-3 divide-y divide-stone-200 border-b">
         {cart.map((item) => (
-          <CartItem item={item} key={item.id} />
+          <CartItem item={item} key={item.pizzaId} />
         ))}
       </ul>
 
