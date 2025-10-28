@@ -1,19 +1,17 @@
 import LinkButton from '../../ui/LinkButton';
 import Button from '../../ui/Button';
 import CartItem from './CartItem';
-import { useSelector, useDispatch } from 'react-redux';
-import { getCart, clearCart } from './cartSlice';
-import { getUser } from '../user/userSlice';
-import EmptyCart from'./EmptyCart'
+import EmptyCart from './EmptyCart';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart, getCart } from './cartSlice';
 
 function Cart() {
+  const username = useSelector((state) => state.user.username);
   const cart = useSelector(getCart);
-
-  const username = useSelector(getUser);
   const dispatch = useDispatch();
 
+  if (!cart.length) return <EmptyCart />;
 
-  if (!cart.length) return <EmptyCart/>
   return (
     <div className="px-4 py-3">
       <LinkButton to="/menu">&larr; Back to menu</LinkButton>
